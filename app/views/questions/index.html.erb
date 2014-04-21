@@ -1,6 +1,5 @@
 <div class="page-header">
   <div class="container">
-    <h1><%= link_to 'Easy Polling', root_path %></h1>
     <%= simple_form_for(@question, html: { class: 'form-horizontal' }) do |f| %>
       
       <%= f.input :title, :label => "Question" %>
@@ -23,7 +22,7 @@
 </div>
 
 <div class="container" id="pollArea">
-  <h3>Current Pollings</h3>
+  <h3>Current Polls</h3>
   <div class="row">
     <% @questions.each_with_index do |question,index| %>
     <div class="span3">

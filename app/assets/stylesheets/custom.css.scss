@@ -3,8 +3,16 @@
 body {
   background-color: #F8F8F8;
   font-family: 'Nunito', sans-serif;
+  padding-top: 60px;
 }
 
+.navbar {
+  background-color: #108a93;  
+}
+
+.navbar a {
+  color: #fff;  
+}
 a:link {
   text-decoration:none;
 } 
@@ -14,10 +22,6 @@ a:link {
   background-color: #108a93;
   color: #fff;
   margin: 0;
-}
-
-.page-header a {
-  color: #fff;
 }
 
 #pollArea {

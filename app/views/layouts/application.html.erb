@@ -11,6 +11,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <h2><%= link_to 'Easy Polls', root_path %></h2>     
+    </div>
+  </nav>
 
   <% if notice %>
     <p class="alert alert-notice"><%= notice %></p>
