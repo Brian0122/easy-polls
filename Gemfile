@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: :test
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -14,7 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-gem 'mysql2'
+# gem 'mysql2', group: :development
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -50,6 +50,13 @@ group :test, :development do
 end
 
 gem 'rqrcode'
+
+# for heroku
+gem 'rails_12factor', group: :production
+group :development,:production do
+    gem "pg"
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
