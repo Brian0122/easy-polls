@@ -1,0 +1,124 @@
+<style type="text/css">
+ table {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+ }
+ td {
+   border-width: 0;
+   border-style: none;
+   border-color: #0000ff;
+   border-collapse: collapse;
+   padding: 0;
+   margin: 0;
+   width: 10px;
+   height: 10px;
+ }
+ td.black { background-color: #000; }
+ td.white { background-color: #fff; }
+</style>
+
+<script type="text/javascript">
+ 
+  $(function(){
+     //Get context with jQuery - using jQuery's .get() method.
+    var ctx = $("#myChart").get(0).getContext("2d");
+    //This will get the first returned node in the jQuery collection.
+    var myNewChart = new Chart(ctx);
+    myNewChart.Doughnut(<%= @data.html_safe %>);
+    $('#doughnut').click(function(e){
+      myNewChart.Doughnut(<%= @data.html_safe %>);
+      e.preventDefault();
+    });
+
+    $('#pie').click(function(e){
+      myNewChart.Pie(<%= @data.html_safe %>);
+      e.preventDefault();
+    });
+
+    $(".btn-group > .btn").click(function(){
+      $(".btn-group > .btn").removeClass("active");
+      $(this).addClass("active");
+    });
+
+    $('#qrcode').popup({
+      transition: 'all 0.5s',
+      scrolllock: true
+    });
+  });
+</script>
+
+<div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=278168672350562";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+<div class="container">
+  <div id="questionTitle" class="row">
+    <h3 ><%= @question.title %>
+    </h3>
+    <div class="fb-share-button" data-href="<%= question_path(@question) %>" data-type="button_count"></div>
+  </div>
+
+  <div class="row">
+    <div class="span3">
+      <div>
+        <canvas id="myChart" width="200" height="200"></canvas>
+        <a href="#" class="qrcode_open">QR Code</a>
+      </div>
+    </div>
+
+    <div id="q_RightDiv" class="span9">
+      <div id="chartType" class="btn-group">
+        <a href="#" id="doughnut" class="btn btn-default active">Doughnut</a>
+        <a href="#" id="pie" class="btn btn-default">Pie</a>
+      </div>
+
+      <p><%= @question.all_count %> votes </p>
+
+      <div id="options">
+        <% @question.all_answers.each do |answer| %>
+          <div class="optionArea">
+            <div> <%= answer.answer %> </div>
+            <div class="bar">  
+              <div class="colorBar" style="background-color:<%= answer.color %>;width: <%= answer.percent %>%"><%= answer.check_count %></div>
+            </div>
+            <div class="bar_percent"><%= answer.percent %>%</div>
+            <div class="vote_btn">
+              <%= link_to "Vote",  '/questions/' + @question.id.to_s() + '/vote/' + answer.id.to_s() %>
+            </div>
+            <div class="clearBoth"></div>
+
+            
+            
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div id="qrcode">
+    <div>
+      <table>
+       <% @qr.modules.each_index do |x| -%>
+         <tr>
+         <% @qr.modules.each_index do |y| -%>
+          <% if @qr.dark?(x,y) -%>
+          <td class="black"/>
+          <% else -%>
+          <td class="white"/>
+          <% end -%>
+         <% end -%>
+         </tr>
+       <% end -%>
+      </table>
+    </div>
+  </div>
+
+</div>

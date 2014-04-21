@@ -1,0 +1,96 @@
+@import "bootstrap";
+
+body {
+  background-color: #F8F8F8;
+  font-family: 'Nunito', sans-serif;
+}
+
+a:link {
+  text-decoration:none;
+} 
+
+.page-header {
+  border-bottom: 1px solid #108a93;
+  background-color: #108a93;
+  color: #fff;
+  margin: 0;
+}
+
+.page-header a {
+  color: #fff;
+}
+
+#pollArea {
+  padding-top: 20px;
+}
+
+.pollArea {
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+}
+
+.pollArea:hover {
+  -webkit-box-shadow: 1px 1px 10px 5px #3276b1;
+  -moz-box-shadow:    1px 1px 10px 5px #3276b1;
+  box-shadow:         1px 1px 10px 5px #3276b1;
+}
+
+#answers div {
+  padding-bottom: 20px;
+}
+
+.canvas {
+  padding-top: 10px;  
+}
+.canvas, .title {
+  text-align: center;
+}
+
+.title {
+  padding: 10px;
+  height: 70px;
+  overflow: hidden
+}
+
+#q_RightDiv {
+  padding-top: 25px;
+}
+
+#chartType {
+  padding-bottom: 20px;
+}
+
+.qrcode_open {
+  margin-left: 70px;
+}
+
+.bar {
+  width: 60%;
+  float: left;
+  background-color: #ffffff;
+}
+
+.colorBar {
+  text-align: center;
+}
+
+.bar_percent {
+  width: 10%;
+  float: left;
+}
+
+.vote_btn {
+  width: 20%;
+  float: left;
+}
+.clearBoth {
+  clear: both;
+}
+
+.optionArea {
+  padding-bottom: 10px;
+}
+
+#questionTitle {
+  padding: 10px 0 30px 30px;
+}

@@ -1,0 +1,16 @@
+<div class="container">
+    <% if notice %>
+      <p class="alert alert-notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-error"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+  </div>
+<%= simple_form_for(@question, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.input :title, :label => "title" %>
+  <label>Answer</label>
+  <input type="text" name="answers[]"/>
+  <input type="text" name="answers[]"/>
+  <%= f.submit %>
+<% end %>
