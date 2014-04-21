@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
       @question = Question.find(params[:id])
       @data = @question.answersJSON
       @qr = RQRCode::QRCode.new(question_url(@question).to_s, :size => 6)
-      # add comment
+      
       respond_to do |format|
         format.html
         format.json { 
